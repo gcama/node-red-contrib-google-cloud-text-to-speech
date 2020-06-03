@@ -1,0 +1,77 @@
+<script type="text/x-red" data-template-name="google-cloud-text-to-speech">
+    <div class="form-row">
+        <label for="node-input-account"><i class="fa fa-user"></i> Service Account Json String</label>
+        <input type="text" id="node-input-account">
+    </div>
+    <div class="form-row">
+        <label for="node-input-keyFilename"><i class="fa fa-user"></i> Service Account Path</label>
+        <input type="text" id="node-input-keyFilename">
+    </div>
+    <div class="form-row">
+        <label for="node-input-languageCode"><i class="fa fa-user"></i> language</label>
+        <select type="text" id="node-input-languageCode">
+            <option value="ja-JP">Japanese</option>
+            <option value="en-US">English</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-voiceName"><i class="fa fa-user"></i> Type</label>
+        <select type="text" id="node-input-voiceName">
+            <option value="ja-JP-Wavenet-A">ja-JP-Wavenet-A</option>
+            <option value="ja-JP-Wavenet-B">ja-JP-Wavenet-B</option>
+            <option value="ja-JP-Wavenet-C">ja-JP-Wavenet-C</option>
+            <option value="ja-JP-Wavenet-D">ja-JP-Wavenet-D</option>
+            <option value="en-US-Wavenet-A">en-US-Wavenet-A</option>
+            <option value="en-US-Wavenet-B">en-US-Wavenet-B</option>
+            <option value="en-US-Wavenet-C">en-US-Wavenet-C</option>
+            <option value="en-US-Wavenet-D">en-US-Wavenet-D</option>
+            <option value="en-US-Wavenet-E">en-US-Wavenet-E</option>
+            <option value="en-US-Wavenet-F">en-US-Wavenet-F</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-voicePitch"><i class="fa fa-user"></i> Pitch</label>
+        <input type="text" id="node-input-voicePitch" placeholder="-3.1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-voiceSpeakingRate"><i class="fa fa-user"></i> SpeakingRate</label>
+        <input type="text" id="node-input-voiceSpeakingRate" placeholder="1.1">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="google-cloud-text-to-speech">
+
+</script>
+
+<script type="text/javascript">
+RED.nodes.registerType("google-cloud-text-to-speech", {
+    category: "advanced",
+    defaults: {
+        account: { type: "google-cloud-text-to-speech-credentials", required: false },
+        keyFilename: { type: "text", required: false },
+        voiceName: { type: "text", required: false},
+        voicePitch: { type: "text", required: false},
+        voiceSpeakingRate: { type: "text", required: false},
+        languageCode: { type: "text", required: false}
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "text-to-speech.png",
+    align: "left",
+    color: "#3FADB5",
+    label: function () {
+        return this.name || "Text To Speech";
+    },
+    paletteLabel: "Text To Speech",
+    oneditprepare: function() {
+        $('#node-input-languageCode').on('change', function() {
+            var val = this.value;
+            $("#node-input-voiceName option").show();
+            $("#node-input-voiceName option").not("[value^='"+val+"']").hide();
+            $("#node-input-voiceName").prop("selectedIndex", -1);
+        })
+        .change();
+    }
+});
+
+</script>

@@ -1,6 +1,6 @@
 {
     "name": "node-red-contrib-google-cloud-text-to-speech",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Generation of voice data using 'Google Cloud Text To Speech' for node-red",
     "node-red": {
         "nodes": {
@@ -12,7 +12,7 @@
         "@google-cloud/text-to-speech": "^2.3.0"
     },
     "author": "Kosuke Kurimoto (https://github.com/kosukekurimoto)",
-    "license": "MIT",
+    "license": "Apache-2.0",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/kosukekurimoto/node-red-contrib-google-cloud-text-to-speech.git"

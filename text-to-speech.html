@@ -37,6 +37,14 @@
         <label for="node-input-voiceSpeakingRate"><i class="fa fa-user"></i> SpeakingRate</label>
         <input type="text" id="node-input-voiceSpeakingRate" placeholder="1.1">
     </div>
+    <div class="form-row">
+        <label for="node-input-voiceFileName"><i class="fa fa-user"></i> Output Directory</label>
+        <input type="text" id="node-input-voiceFileName" placeholder="/home/pi/">
+    </div>
+    <div class="form-row">
+        <label for="node-input-voiceDir"><i class="fa fa-user"></i> Output Filename</label>
+        <input type="text" id="node-input-voiceDir" placeholder="audio.mp3">
+    </div>
 </script>
 
 <script type="text/x-red" data-help-name="google-cloud-text-to-speech">
@@ -52,7 +60,9 @@ RED.nodes.registerType("google-cloud-text-to-speech", {
         voiceName: { type: "text", required: false},
         voicePitch: { type: "text", required: false},
         voiceSpeakingRate: { type: "text", required: false},
-        languageCode: { type: "text", required: false}
+        languageCode: { type: "text", required: false},
+        voiceFileName: { type: "text", required: false},
+        voiceDir: { type: "text", required: false}
     },
     inputs: 1,
     outputs: 1,
